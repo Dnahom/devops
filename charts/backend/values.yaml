@@ -7,3 +7,7 @@ service:
   name: backend-service
   type: ClusterIP
   port: 3500
+  
+mongodb:
+  host: mongodb-service
+  port: 27017

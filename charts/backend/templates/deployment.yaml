@@ -17,3 +17,7 @@ spec:
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           ports:
             - containerPort: {{ .Values.service.port }}
+          env:
+            - name: MONGODB_URI
+              value: "mongodb://{{ .Values.mongodb.host }}:{{ .Values.mongodb.port }}/your-database-name"
+
