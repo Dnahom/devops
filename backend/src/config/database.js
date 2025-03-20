@@ -1,19 +1,16 @@
-const mongoose = require("mongoose");
-require("dotenv").config({ path: "./src/config/.env" });
-const connectDB = async () => {
-    try {
-        const connectionInstance = await mongoose.connect(
-            `${process.env.MONGODB_URI}/${process.env.DB_NAME}`
-        );
+const mongoose = require('mongoose');
 
-        console.log(
-            `\n 🍀🍀🍀 MongoDB Connected! Db host: ${connectionInstance.connection.host} 🍀🍀🍀 \n`
-        );
-        return connectionInstance;
-    } catch (error) {
-        console.log("MongoDB connection error: ", error);
-        process.exit(1);
-    }
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect('mongodb://172.17.0.1:27018/shoppify', {  // Use the IP address you found
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.error(`Error connecting to MongoDB: ${error}`);
+    process.exit(1);
+  }
 };
 
 module.exports = connectDB;

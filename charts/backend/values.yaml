@@ -1,0 +1,9 @@
+image:
+  repository: your-docker-username/backend-image
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  name: backend-service
+  type: ClusterIP
+  port: 3500

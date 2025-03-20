@@ -1,0 +1,24 @@
+replicaCount: 1
+
+image:
+  repository: mongo
+  tag: "4.4.0"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 27017
+
+persistence:
+  enabled: false
+  accessMode: ReadWriteOnce
+  size: 1Gi
+
+resources:
+  limits:
+    memory: 512Mi
+    cpu: 500m
+  requests:
+    memory: 256Mi
+    cpu: 250m
+

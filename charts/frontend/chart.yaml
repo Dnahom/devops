@@ -1,0 +1,4 @@
+apiVersion: v2
+name: frontend
+description: Helm chart for G-Shoppify frontend
+version: 0.1.0

@@ -1,0 +1,10 @@
+image:
+  repository: your-docker-username/frontend-image
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  name: frontend-service
+  type: NodePort
+  port: 3002
+  nodePort: 30761
