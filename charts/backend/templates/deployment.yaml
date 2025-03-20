@@ -19,5 +19,4 @@ spec:
             - containerPort: {{ .Values.service.port }}
           env:
             - name: MONGODB_URI
-              value: "mongodb://{{ .Values.mongodb.host }}:{{ .Values.mongodb.port }}/your-database-name"
-
+              value: "mongodb://{{ .Values.mongodb.host }}:{{ .Values.mongodb.port }}"

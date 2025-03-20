@@ -9,5 +9,5 @@ service:
   port: 3500
   
 mongodb:
-  host: mongodb-service
+  host: mongodb-service.default.svc.cluster.local  # Correct format for internal communication
   port: 27017
