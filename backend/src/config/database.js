@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect('mongodb://172.17.0.1:27018/shoppify', {  // Use the IP address you found
+    const conn = await mongoose.connect('mongodb://mongodb-service:27017/shoppify', {  // Use the service name
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
