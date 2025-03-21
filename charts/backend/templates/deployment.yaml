@@ -19,4 +19,15 @@ spec:
             - containerPort: {{ .Values.service.port }}
           env:
             - name: MONGODB_URI
-              value: "mongodb://{{ .Values.mongodb.host }}:{{ .Values.mongodb.port }}"
+              value: "mongodb://mongodb-service.default.svc.cluster.local:27017/shoppify"
+  - name: DB_NAME
+    value: "shoppify"
+  - name: PORT
+    value: "3500"
+  - name: JWT_SECRET
+    value: "your_jwt_secret"
+  - name: JWT_EXPIRES_IN
+    value: "1d"
+  - name: FRONTEND_URL
+    value: "http://your-frontend-url"
+
