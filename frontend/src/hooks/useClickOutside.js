@@ -2,10 +2,10 @@ import { useEffect, useRef } from "react";
 
 export default function useClickOutside(callbackHandler) {
   const ref = useRef();
+      if (!ref.current?.contains(event.target)) {
 
   useEffect(() => {
     let mouseDownFunc = (event) => {
-      if (!ref.current?.contains(event.target)) {
         callbackHandler();
       }
     };
