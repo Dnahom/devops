@@ -1,13 +1,15 @@
-// backend/db.js
+require('dotenv').config({ path: './src/.env' });  // Ensure .env file is loaded
+
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect('mongodb://127.0.0.1:27017/yourDatabaseName', {
+    const conn = await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
 
+    // Log the connection details
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.error(`Error: ${error.message}`);
