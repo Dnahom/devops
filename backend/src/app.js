@@ -41,13 +41,15 @@ const httpRequestCounter = new client.Counter({
 // Middleware to track HTTP requests
 app.use((req, res, next) => {
     res.on("finish", () => {
+        console.log(`Request made to ${req.method} ${req.path}`);  // Log for debugging
         httpRequestCounter.labels(req.method, req.path, res.statusCode).inc();
     });
     next();
 });
 
-// Expose /metrics endpoint (this must be before other routes)
+// Expose /metrics endpoint (must be before other routes)
 app.get("/metrics", async (req, res) => {
+    console.log("Metrics requested...");  // Log for debugging
     res.set("Content-Type", register.contentType);
     res.end(await register.metrics());
 });
