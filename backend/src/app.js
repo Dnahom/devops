@@ -5,6 +5,13 @@ const cors = require("cors");
 const morgan = require("morgan");
 const client = require("prom-client");
 
+const trackMetrics = require('./utils/metrics'); // Path to your metrics.js
+
+app.use(trackMetrics);
+
+// Your other routes and app logic
+
+
 const app = express();
 const productsRoute = require("./routes/products.routes");
 const cartRoute = require("./routes/cart.routes");
