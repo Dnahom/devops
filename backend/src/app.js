@@ -34,6 +34,7 @@ app.use(express.urlencoded({ extended: false })); // Parse incoming URL-encoded 
 app.use(morgan("dev")); // Log HTTP requests
 
 // Middleware to track HTTP requests for Prometheus metrics
+// Middleware to track HTTP requests for Prometheus metrics
 app.use((req, res, next) => {
     res.on("finish", () => {
         // Fallback to "unknown" if the route is not directly mapped
@@ -78,7 +79,10 @@ app.get("/", (req, res) => {
 });
 
 // Handle 404 errors (if no route matches)
+// Handle 404 errors (if no route matches)
 app.use("*", notFound);
+
+// Error handling middleware (for operational errors)
 
 // Error handling middleware (for operational errors)
 app.use(errorHandler);
