@@ -23,6 +23,7 @@ const corsOption = {
         "http://localhost:5174",
         "http://localhost:5173",
         "http://localhost:4173",
+        "http://localhost:3002", 
         process.env.FRONTEND_URL,
     ],
     credentials: true,

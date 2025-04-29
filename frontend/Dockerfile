@@ -5,7 +5,7 @@ FROM node:18
 WORKDIR /app
 
 # Copy package.json and package-lock.json
-COPY ./frontend/package*.json ./
+COPY package*.json ./
 
 RUN npm install --legacy-peer-deps
 
@@ -13,7 +13,7 @@ RUN npm install --legacy-peer-deps
 RUN npm install
 
 # Copy the rest of the application code
-COPY ./frontend ./
+COPY . .
 
 # Build the React application
 RUN npm run build
