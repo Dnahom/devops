@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shoppify-back
+  labels:
+    app: shoppify-back
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shoppify-back
+  template:
+    metadata:
+      labels:
+        app: shoppify-back
+    spec:
+      containers:
+        - name: shoppify-back
+          image: nahom23/shoppify-back:latest  # <-- Make sure this image exists on Docker Hub
+          ports:
+            - containerPort: 3000 # assuming your backend listens on port 3001

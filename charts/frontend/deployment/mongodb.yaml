@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-deployment
+  labels:
+    app: mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+        - name: mongodb
+          image: nahom23/mongodb:latest
+          ports:
+            - containerPort: 27017
+          env:
+            - name: MONGODB_ROOT_PASSWORD
+              value: "admin"
+            - name: MONGODB_USERNAME
+              value: "myuser"
+            - name: MONGODB_PASSWORD
+              value: "admin"
+            - name: MONGODB_DATABASE
+              value: "shoppify"

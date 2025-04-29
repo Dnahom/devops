@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shoppify-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shoppify-front
+  template:
+    metadata:
+      labels:
+        app: shoppify-front
+    spec:
+      containers:
+      - name: shoppify-front
+        image: nahom23/shoppify-front:latest
+
+        ports:
+        - containerPort: 3002 # (change if your app uses different port)
