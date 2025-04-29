@@ -1,35 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mongodb-dep
-  labels:
-    app: mongodb
+  name: your-app-deployment
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
-      app: mongodb
+      app: your-app
   template:
     metadata:
       labels:
-        app: mongodb
+        app: your-app
     spec:
       containers:
-        - name: mongodb
-          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+        - name: your-app
+          image: your-app-image
           ports:
-            - containerPort: 27017
-          resources:
-            limits:
-              memory: {{ .Values.resources.limits.memory }}
-              cpu: {{ .Values.resources.limits.cpu }}
-            requests:
-              memory: {{ .Values.resources.requests.memory }}
-              cpu: {{ .Values.resources.requests.cpu }}
-          volumeMounts:
-            - name: mongodb-data
-              mountPath: /data/db
-      volumes:
-        - name: mongodb-data
-          emptyDir: {}
+            - containerPort: 8080  # or whatever your app uses
+          env:
+            - name: MONGO_HOST
+              value: "mongodb.database.svc.cluster.local"  # MongoDB service in 'database' namespace
+            - name: MONGO_PORT
+              value: "27017"

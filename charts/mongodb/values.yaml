@@ -1,24 +1,5 @@
-replicaCount: 1
+useExternalMongoDB: true
 
-image:
-  repository: mongo
-  tag: "4.4.0"
-  pullPolicy: IfNotPresent
-
-service:
-  type: ClusterIP
+externalMongoDB:
+  host: mongodb.database.svc.cluster.local  # This is the MongoDB service in the 'database' namespace
   port: 27017
-
-persistence:
-  enabled: false
-  accessMode: ReadWriteOnce
-  size: 1Gi
-
-resources:
-  limits:
-    memory: 512Mi
-    cpu: 500m
-  requests:
-    memory: 256Mi
-    cpu: 250m
-
